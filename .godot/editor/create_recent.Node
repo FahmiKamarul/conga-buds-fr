@@ -1,8 +1,8 @@
+Sprite2D
 Camera2D
 Button
 AudioStreamPlayer2D
 AnimationPlayer
-Sprite2D
 Timer
 CollisionShape2D
 Area2D
@@ -12,4 +12,3 @@ Label
 CanvasLayer
 PointLight2D
 Level
-CanvasModulate

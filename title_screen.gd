@@ -4,14 +4,16 @@ func _ready():
 	pass # Replace with function body.
 
 
-
-
 func _on_button_pressed():
 	$Control.visible = false
-	$Control2.visible = true
+	$Control3.visible = true
+	
 	# GAMEMANAGER.swap_scene(preload(level_select))
 	pass # Replace with function body.
 
+func close_tutorial():
+	$Control3.visible = false
+	$Control2.visible = true
 
 func _on_button1_pressed():
 	GAMEMANAGER.load_level(0)
