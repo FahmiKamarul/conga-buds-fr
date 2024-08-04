@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://00dk3t3yvd00"]
+
+[ext_resource type="Script" path="res://chara/bud.gd" id="1_xrv16"]
+[ext_resource type="Texture2D" uid="uid://c1sna6lotthum" path="res://chara/ogu_sprite.png" id="2_gk5om"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0raw"]
+radius = 20.19
+height = 40.38
+
+[node name="bud" type="CharacterBody2D"]
+script = ExtResource("1_xrv16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_v0raw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_gk5om")
+offset = Vector2(8, 16)

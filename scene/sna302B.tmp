@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1ggrd43bqyuf"]
+
+[ext_resource type="Script" path="res://scene/StateMachine.gd" id="1_7dpvp"]
+[ext_resource type="Script" path="res://scene/Walk.gd" id="2_7iald"]
+[ext_resource type="Script" path="res://scene/Turn.gd" id="3_seng6"]
+[ext_resource type="PackedScene" uid="uid://cqgvaj4ll1odk" path="res://chara/bud_biggie.tscn" id="4_ptnod"]
+[ext_resource type="Script" path="res://scene/Label.gd" id="5_jyxmf"]
+
+[sub_resource type="Curve2D" id="Curve2D_3jui5"]
+_data = {
+"points": PackedVector2Array(-50, -0.374578, 50, 0, 0, 0, 0, 0, 0, 50, 50, 50, 0, 0, -50, 0, 0, 100, 0, 0, 0, -50, -50, 50, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="snake" type="Node2D"]
+
+[node name="back" type="Node2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_7dpvp")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("2_7iald")
+
+[node name="Turn" type="Node" parent="StateMachine"]
+script = ExtResource("3_seng6")
+
+[node name="head" parent="." instance=ExtResource("4_ptnod")]
+
+[node name="Label" type="Label" parent="head"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "State: "
+script = ExtResource("5_jyxmf")
+metadata/_edit_use_anchors_ = true
+
+[node name="Path2D" type="Path2D" parent="head"]
+curve = SubResource("Curve2D_3jui5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="head/Path2D"]
+position = Vector2(-2.24645e-05, 100)
+rotation = 2.3562
+progress = 158.609
+
+[node name="head2" parent="head/Path2D/PathFollow2D" instance=ExtResource("4_ptnod")]
+
+[node name="pivot" type="Node2D" parent="."]

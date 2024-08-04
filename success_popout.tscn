@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dileco33bstvf"]
+
+[ext_resource type="Script" path="res://success_popout.gd" id="1_t2hcl"]
+[ext_resource type="Texture2D" uid="uid://h4b5hhf330po" path="res://plank_sprite.png" id="2_y3pan"]
+[ext_resource type="Texture2D" uid="uid://cjv0vjqxlafg7" path="res://biggie_full.png" id="3_ex7q7"]
+[ext_resource type="Texture2D" uid="uid://vlgxbf7wg34a" path="res://next_level.png" id="4_hgqyn"]
+[ext_resource type="Texture2D" uid="uid://wv1bldjvub3" path="res://thumb_up.png" id="4_q52rx"]
+[ext_resource type="Texture2D" uid="uid://dd806rkxloprg" path="res://return_sprite.png" id="6_hydtl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2h2u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwseg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_grnmw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l7o2x"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t2hcl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+light_mask = 2
+position = Vector2(543, 307)
+scale = Vector2(0.544, 0.544)
+texture = ExtResource("2_y3pan")
+
+[node name="BiggieHurt" type="Sprite2D" parent="CanvasLayer"]
+light_mask = 2
+position = Vector2(502, 252)
+scale = Vector2(0.379679, 0.379679)
+texture = ExtResource("3_ex7q7")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 557.0
+offset_top = 401.0
+offset_right = 1557.0
+offset_bottom = 1025.0
+scale = Vector2(0.185, 0.185)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g2h2u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uwseg")
+icon = ExtResource("4_hgqyn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(669, 211)
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("4_q52rx")
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 361.0
+offset_top = 402.0
+offset_right = 711.0
+offset_bottom = 617.0
+scale = Vector2(0.54, 0.54)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_grnmw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l7o2x")
+icon = ExtResource("6_hydtl")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]

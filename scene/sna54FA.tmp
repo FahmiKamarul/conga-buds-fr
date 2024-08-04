@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://b1ggrd43bqyuf"]
+
+[ext_resource type="Script" path="res://scene/snake.gd" id="1_8oot7"]
+[ext_resource type="Script" path="res://script/StateMachine.gd" id="1_co15p"]
+[ext_resource type="Script" path="res://script/Walk.gd" id="2_1b3s4"]
+[ext_resource type="Script" path="res://script/Turn.gd" id="3_0uxi7"]
+[ext_resource type="Script" path="res://script/Dead.gd" id="4_1wb7n"]
+[ext_resource type="PackedScene" uid="uid://dfcpw0c3vxcx7" path="res://chara/bud.tscn" id="6_vixmy"]
+[ext_resource type="Script" path="res://script/Label.gd" id="6_yqxrx"]
+[ext_resource type="Script" path="res://scene/backArea2D.gd" id="7_6k57n"]
+[ext_resource type="Texture2D" uid="uid://idvp0snkp70f" path="res://scene/crown.png" id="9_45i1v"]
+[ext_resource type="Texture2D" uid="uid://bggch73jxsr1a" path="res://scene/Untitled.png" id="9_aiyxb"]
+
+[sub_resource type="Curve2D" id="Curve2D_3jui5"]
+_data = {
+"points": PackedVector2Array(-50, -0.374578, 50, 0, 0, 0, 0, 0, 0, 50, 50, 50, 0, 0, -50, 0, 0, 100, 0, 0, 0, -50, -50, 50, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_fskqo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2btyt"]
+radius = 20.0
+height = 60.0
+
+[node name="snake" type="Node2D"]
+script = ExtResource("1_8oot7")
+
+[node name="back" type="Node2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_co15p")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("2_1b3s4")
+
+[node name="Turn" type="Node" parent="StateMachine"]
+script = ExtResource("3_0uxi7")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("4_1wb7n")
+
+[node name="head" parent="." instance=ExtResource("6_vixmy")]
+changeble = true
+
+[node name="Label" type="Label" parent="head"]
+visible = false
+offset_right = 49.0
+offset_bottom = 23.0
+text = "State: "
+script = ExtResource("6_yqxrx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Path2D" type="Path2D" parent="head"]
+curve = SubResource("Curve2D_3jui5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="head/Path2D"]
+position = Vector2(-2.24645e-05, 100)
+rotation = 2.3562
+progress = 158.609
+
+[node name="Node2D" type="Node2D" parent="head/Path2D/PathFollow2D"]
+
+[node name="Line2D" type="Line2D" parent="head"]
+z_index = -1
+width_curve = SubResource("Curve_fskqo")
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="ghost" parent="." instance=ExtResource("6_vixmy")]
+position = Vector2(-2.24645e-05, 100)
+rotation = 2.3562
+changeble = true
+
+[node name="doubleClick" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="sprint" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="backArea2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(-48, 0)
+monitoring = false
+script = ExtResource("7_6k57n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="backArea2D"]
+position = Vector2(3, 0)
+shape = SubResource("CapsuleShape2D_2btyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="backArea2D"]
+position = Vector2(2.88043, 0)
+scale = Vector2(0.12413, 0.152174)
+texture = ExtResource("9_aiyxb")
+
+[node name="crown" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("9_45i1v")
+
+[node name="queue" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="doubleClick" to="StateMachine/Walk" method="_on_timer_timeout"]
+[connection signal="timeout" from="doubleClick" to="StateMachine/Turn" method="_on_double_click_timeout"]
+[connection signal="timeout" from="sprint" to="StateMachine" method="_on_sprint_timeout"]
+[connection signal="body_entered" from="backArea2D" to="backArea2D" method="_on_body_entered"]
+[connection signal="timeout" from="queue" to="StateMachine" method="_on_queue_timeout"]

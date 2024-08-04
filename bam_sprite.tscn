@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clt65i8c4gxtd"]
+
+[ext_resource type="Texture2D" uid="uid://ckn10k765qoyr" path="res://chara/bam_sprite.png" id="1_dxwm2"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(8, 8)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_dxwm2")

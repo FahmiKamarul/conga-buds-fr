@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnu3ha0owbe15"]
+
+[ext_resource type="AudioStream" uid="uid://01o0j231rufr" path="res://738111__sycopation__snare_congas_bongos_doumbek_cowbells-1.wav" id="1_tente"]
+[ext_resource type="AudioStream" uid="uid://d0u1bw70ray1p" path="res://738112__sycopation__snare_congas_bongos_doumbek_cowbells-2.wav" id="2_fk5we"]
+[ext_resource type="AudioStream" uid="uid://ch1stph8jpqgy" path="res://738113__sycopation__snare_congas_bongos_doumbek_cowbells-3.wav" id="3_268wn"]
+[ext_resource type="AudioStream" uid="uid://c0d2e2efw0ebg" path="res://738114__sycopation__snare_congas_bongos_doumbek_cowbells-4.wav" id="4_ndvlk"]
+[ext_resource type="AudioStream" uid="uid://ccc1qpmtbchh" path="res://738116__sycopation__snare_congas_bongos_doumbek_cowbells-6.wav" id="5_7f43a"]
+[ext_resource type="Script" path="res://BGM.gd" id="6_x5yvv"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_36bv5"]
+streams_count = 5
+stream_0/stream = ExtResource("1_tente")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_fk5we")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_268wn")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_ndvlk")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_7f43a")
+stream_4/weight = 1.0
+
+[node name="MAIN" type="Node"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_36bv5")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("6_x5yvv")

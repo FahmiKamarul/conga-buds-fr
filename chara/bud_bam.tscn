@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vcvi4i2vmwa4"]
+
+[ext_resource type="Script" path="res://chara/bud.gd" id="1_hpyil"]
+[ext_resource type="PackedScene" uid="uid://clt65i8c4gxtd" path="res://bam_sprite.tscn" id="2_lkwrs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0raw"]
+radius = 20.19
+height = 40.38
+
+[node name="bud" type="CharacterBody2D"]
+script = ExtResource("1_hpyil")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_v0raw")
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_lkwrs")]
+position = Vector2(0, 0)

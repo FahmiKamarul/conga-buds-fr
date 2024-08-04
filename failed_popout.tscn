@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5ystcb3cepja"]
+
+[ext_resource type="Texture2D" uid="uid://h4b5hhf330po" path="res://plank_sprite.png" id="1_fy1h0"]
+[ext_resource type="Script" path="res://failed_popout.gd" id="1_sx4pb"]
+[ext_resource type="Texture2D" uid="uid://cnk3qkphmkgg2" path="res://biggie_hurt.png" id="2_mbl1h"]
+[ext_resource type="Texture2D" uid="uid://bdh65ahqp07c3" path="res://retry_sprite.png" id="4_nwc6t"]
+[ext_resource type="Texture2D" uid="uid://dd806rkxloprg" path="res://return_sprite.png" id="4_o0p64"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rc1ga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4kyi"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sx4pb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+light_mask = 2
+position = Vector2(543, 307)
+scale = Vector2(0.544, 0.544)
+texture = ExtResource("1_fy1h0")
+
+[node name="BiggieHurt" type="Sprite2D" parent="CanvasLayer"]
+light_mask = 2
+position = Vector2(525, 252)
+scale = Vector2(0.379679, 0.379679)
+texture = ExtResource("2_mbl1h")
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 367.0
+offset_top = 404.0
+offset_right = 725.0
+offset_bottom = 627.0
+scale = Vector2(0.52, 0.52)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rc1ga")
+icon = ExtResource("4_o0p64")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 560.0
+offset_top = 399.0
+offset_right = 658.0
+offset_bottom = 464.0
+scale = Vector2(1.925, 1.925)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i4kyi")
+icon = ExtResource("4_nwc6t")
+
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

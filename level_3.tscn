@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://bw7yv3vrb3msa"]
+
+[ext_resource type="Script" path="res://level_3.gd" id="1_yract"]
+[ext_resource type="Texture2D" uid="uid://fp3bgownkge7" path="res://beach_sprite.png" id="2_kvyxo"]
+[ext_resource type="PackedScene" uid="uid://b1ggrd43bqyuf" path="res://scene/snake.tscn" id="3_0md0f"]
+[ext_resource type="Script" path="res://GameBoundary.gd" id="4_di3sn"]
+[ext_resource type="PackedScene" uid="uid://blxwudhfh2e0v" path="res://campfire.tscn" id="5_5ofas"]
+[ext_resource type="FontFile" uid="uid://cltoyq6301a3g" path="res://PermanentMarker-Regular.ttf" id="6_ux7i7"]
+[ext_resource type="AudioStream" uid="uid://dos67c2uagkxu" path="res://success.wav" id="7_g2pi4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0tlp"]
+size = Vector2(2939, 472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgcis"]
+size = Vector2(897.25, 733)
+
+[sub_resource type="FontVariation" id="FontVariation_s6mur"]
+base_font = ExtResource("6_ux7i7")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vll40"]
+font = SubResource("FontVariation_s6mur")
+font_size = 40
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_yract")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(579, 322.5)
+scale = Vector2(0.606481, 0.606481)
+texture = ExtResource("2_kvyxo")
+
+[node name="snake" parent="." instance=ExtResource("3_0md0f")]
+position = Vector2(437, 350)
+sprite_type = 1
+
+[node name="snake2" parent="." instance=ExtResource("3_0md0f")]
+position = Vector2(184, 96)
+is_king = true
+
+[node name="snake3" parent="." instance=ExtResource("3_0md0f")]
+position = Vector2(784, 355)
+start_dir = Vector2(-1, -1)
+sprite_type = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_di3sn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(599, -278)
+shape = SubResource("RectangleShape2D_u0tlp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(591, 917)
+shape = SubResource("RectangleShape2D_u0tlp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-476, 319)
+shape = SubResource("RectangleShape2D_qgcis")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1642, 318.5)
+shape = SubResource("RectangleShape2D_qgcis")
+
+[node name="campfire2" parent="." instance=ExtResource("5_5ofas")]
+position = Vector2(904, 328)
+
+[node name="campfire" parent="." instance=ExtResource("5_5ofas")]
+position = Vector2(344, 249)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.516311, 0.425574, 0.376733, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Goal" type="Label" parent="CanvasLayer"]
+light_mask = 2
+offset_left = 520.0
+offset_top = 1.0
+offset_right = 615.0
+offset_bottom = 59.0
+text = "0 / 3"
+label_settings = SubResource("LabelSettings_vll40")
+
+[node name="snake4" parent="." instance=ExtResource("3_0md0f")]
+position = Vector2(1000, 96)
+start_dir = Vector2(-1, 0)
+sprite_type = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_g2pi4")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

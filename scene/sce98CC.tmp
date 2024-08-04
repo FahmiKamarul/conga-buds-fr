@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ggrd43bqyuf"]
+
+[ext_resource type="Script" path="res://scene/snake.gd" id="1_gcji7"]
+
+[sub_resource type="Curve2D" id="Curve2D_mvj2k"]
+
+[node name="snake" type="Node2D"]
+script = ExtResource("1_gcji7")
+
+[node name="backtrackPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mvj2k")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="backtrackPath"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqgvaj4ll1odk"]
+
+[ext_resource type="Script" path="res://chara/bud.gd" id="1_ld303"]
+[ext_resource type="Texture2D" uid="uid://cfvggl4cdmsaw" path="res://chara/biggie_sprite.png" id="1_murai"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0raw"]
+radius = 20.19
+height = 40.38
+
+[sub_resource type="Animation" id="Animation_73jdp"]
+resource_name = "bud_pop_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.7, 0.7), Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n1s53"]
+_data = {
+"bud_pop_in": SubResource("Animation_73jdp")
+}
+
+[node name="bud" type="CharacterBody2D"]
+script = ExtResource("1_ld303")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_v0raw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_murai")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n1s53")
+}

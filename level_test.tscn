@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://d075kkr24horr"]
+
+[ext_resource type="Script" path="res://level_1.gd" id="1_yb1g8"]
+[ext_resource type="Texture2D" uid="uid://fp3bgownkge7" path="res://beach_sprite.png" id="2_5v7x6"]
+[ext_resource type="PackedScene" uid="uid://b1ggrd43bqyuf" path="res://scene/snake.tscn" id="3_g5aul"]
+[ext_resource type="Script" path="res://GameBoundary.gd" id="4_3ld5j"]
+[ext_resource type="FontFile" uid="uid://cltoyq6301a3g" path="res://PermanentMarker-Regular.ttf" id="5_o6ewx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0tlp"]
+size = Vector2(2939, 472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgcis"]
+size = Vector2(897.25, 733)
+
+[sub_resource type="FontVariation" id="FontVariation_s7ui1"]
+base_font = ExtResource("5_o6ewx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uc171"]
+font = SubResource("FontVariation_s7ui1")
+font_size = 40
+
+[node name="level_1" type="Node2D"]
+script = ExtResource("1_yb1g8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(579, 322.5)
+scale = Vector2(0.606481, 0.606481)
+texture = ExtResource("2_5v7x6")
+
+[node name="snake2" parent="." instance=ExtResource("3_g5aul")]
+position = Vector2(318, 251)
+SPEED = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_3ld5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(599, -278)
+shape = SubResource("RectangleShape2D_u0tlp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(591, 917)
+shape = SubResource("RectangleShape2D_u0tlp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-476, 319)
+shape = SubResource("RectangleShape2D_qgcis")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1642, 318.5)
+shape = SubResource("RectangleShape2D_qgcis")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Goal" type="Label" parent="."]
+light_mask = 2
+offset_left = 520.0
+offset_top = 1.0
+offset_right = 615.0
+offset_bottom = 59.0
+text = "0 / 3"
+label_settings = SubResource("LabelSettings_uc171")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

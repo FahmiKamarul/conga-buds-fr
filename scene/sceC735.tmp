@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ggrd43bqyuf"]
+
+[ext_resource type="Script" path="res://scene/StateMachine.gd" id="2_8j0pn"]
+[ext_resource type="PackedScene" uid="uid://cqgvaj4ll1odk" path="res://chara/bud.tscn" id="2_wbxec"]
+[ext_resource type="Script" path="res://scene/Walk.gd" id="3_qj14b"]
+[ext_resource type="Script" path="res://scene/Turn.gd" id="4_4adug"]
+[ext_resource type="Script" path="res://scene/Label.gd" id="5_rwu28"]
+
+[node name="snake" type="Node2D"]
+
+[node name="back" type="Node2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_8j0pn")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("3_qj14b")
+
+[node name="Turn" type="Node" parent="StateMachine"]
+script = ExtResource("4_4adug")
+
+[node name="head" parent="." instance=ExtResource("2_wbxec")]
+
+[node name="Label" type="Label" parent="head"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "State: "
+script = ExtResource("5_rwu28")
+
+[node name="pivot" type="Node2D" parent="."]

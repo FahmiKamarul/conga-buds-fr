@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ggrd43bqyuf"]
+
+[ext_resource type="Script" path="res://scene/snake.gd" id="1_gcji7"]
+
+[node name="snake" type="Node2D"]
+script = ExtResource("1_gcji7")
+
+[node name="back" type="Node2D" parent="."]

@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs21rri3lm5nr"]
+
+[ext_resource type="Texture2D" uid="uid://ojwvow2ombw2" path="res://scene/title_sprite.png" id="1_480k3"]
+[ext_resource type="Script" path="res://title_screen.gd" id="1_nw0wa"]
+[ext_resource type="Texture2D" uid="uid://os5gbjqvgk4c" path="res://scene/start_sprite.png" id="2_58unl"]
+[ext_resource type="Texture2D" uid="uid://c16k82ditb647" path="res://button_1_sprite.png" id="4_hofwy"]
+[ext_resource type="Texture2D" uid="uid://d2ra8q2napu3e" path="res://button_2_sprite.png" id="5_ph8g0"]
+[ext_resource type="Texture2D" uid="uid://d2r8i1tbel2rn" path="res://button_3_sprite.png" id="6_enb7a"]
+[ext_resource type="Texture2D" uid="uid://dp287yav3mufi" path="res://button_4_sprite.png" id="7_75wnu"]
+[ext_resource type="Texture2D" uid="uid://0e2ttlmbfbxm" path="res://lavel_sprite.png" id="8_r216b"]
+[ext_resource type="Texture2D" uid="uid://q2fxf0cg81cr" path="res://endless_sprite.png" id="9_kfw1s"]
+
+[sub_resource type="Gradient" id="Gradient_q0r3p"]
+colors = PackedColorArray(0.353399, 0.74372, 0.884386, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nslcp"]
+gradient = SubResource("Gradient_q0r3p")
+width = 1920
+height = 1080
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ImageTexture" id="ImageTexture_out38"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odehl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sgjkm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nw0wa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(583, 325.5)
+scale = Vector2(0.605208, 0.619444)
+texture = SubResource("GradientTexture2D_nslcp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(576, 229)
+scale = Vector2(0.4115, 0.4115)
+texture = ExtResource("1_480k3")
+
+[node name="Button" type="Button" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 493.0
+offset_top = 478.0
+offset_right = 682.0
+offset_bottom = 576.0
+icon = SubResource("ImageTexture_out38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Button"]
+position = Vector2(90, 44)
+scale = Vector2(0.555937, 0.610156)
+texture = ExtResource("2_58unl")
+
+[node name="Control2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control2"]
+position = Vector2(576, 159)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_r216b")
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 219.0
+offset_right = 369.0
+offset_bottom = 306.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_odehl")
+icon = ExtResource("4_hofwy")
+
+[node name="Button2" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 217.0
+offset_right = 565.0
+offset_bottom = 307.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_odehl")
+icon = ExtResource("5_ph8g0")
+
+[node name="Button3" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 579.0
+offset_top = 217.0
+offset_right = 761.0
+offset_bottom = 305.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_odehl")
+icon = ExtResource("6_enb7a")
+
+[node name="Button4" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 220.0
+offset_right = 969.0
+offset_bottom = 307.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_odehl")
+icon = ExtResource("7_75wnu")
+
+[node name="Button5" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 352.0
+offset_right = 726.0
+offset_bottom = 498.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sgjkm")
+icon = ExtResource("9_kfw1s")
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="." method="_on_button1_pressed"]
+[connection signal="pressed" from="Control2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control2/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control2/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Control2/Button5" to="." method="_on_button_5_pressed"]

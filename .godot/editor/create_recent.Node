@@ -1,0 +1,15 @@
+Camera2D
+Button
+AudioStreamPlayer2D
+AnimationPlayer
+Sprite2D
+Timer
+CollisionShape2D
+Area2D
+Marker2D
+VideoStreamPlayer
+Label
+CanvasLayer
+PointLight2D
+Level
+CanvasModulate
