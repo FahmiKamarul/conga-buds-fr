@@ -29,3 +29,5 @@ res://title_screen.gd
 res://script/Walk.gd
 res://main.tscn
 res://BGM.gd
+res://level_1.gd
+res://tutorial_popout.gd

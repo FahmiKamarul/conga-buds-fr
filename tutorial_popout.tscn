@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dy3mju0jccggg"]
 
-[ext_resource type="Script" path="res://success_popout.gd" id="1_dlg8t"]
+[ext_resource type="Script" path="res://tutorial_popout.gd" id="1_ma3gu"]
 [ext_resource type="Texture2D" uid="uid://h4b5hhf330po" path="res://plank_sprite.png" id="2_twy5t"]
 [ext_resource type="Texture2D" uid="uid://os5gbjqvgk4c" path="res://scene/start_sprite.png" id="3_f2m7i"]
 [ext_resource type="Texture2D" uid="uid://bb6btahva1pai" path="res://tutorial_sprite.png" id="3_tvsai"]
@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dlg8t")
+script = ExtResource("1_ma3gu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -36,13 +36,6 @@ scale = Vector2(0.405, 0.405)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8nqis")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_gpi4m")
 icon = ExtResource("3_f2m7i")
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = 350.0
-offset_top = 143.0
-offset_right = 768.0
-offset_bottom = 359.0
-autoplay = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(353, 242)
